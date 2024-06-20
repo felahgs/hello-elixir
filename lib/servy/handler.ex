@@ -44,14 +44,20 @@ defmodule Servy.Handler do
     %{conv | status: 200, resp_body: "Bear #{id}"}
   end
 
-  # # name=Baloo&type=Brown
-  # def route(%Conv{method: "POST", path: "/bears"} = conv) do
-  #   %{
-  #     conv
-  #     | status: 201,
-  #       resp_body: "Created a #{conv.params["type"]} bear named #{conv.params["name"]}!"
-  #   }
-  # end
+  # name=Baloo&type=Brown
+  def route(%Conv{method: "POST", path: "/bears"} = conv) do
+    %{
+      conv
+      | status: 201,
+        resp_body: "Created a #{conv.params["type"]} bear named #{conv.params["name"]}!"
+    }
+
+    # %{
+    #   conv
+    #   | status: 201,
+    #     resp_body: "Created a #{conv.params["type"]} bear named #{conv.params["name"]}!"
+    # }
+  end
 
   def route(%Conv{method: "GET", path: "/about"} = conv) do
     # pages_path = Path.expand("../../pages", __DIR__) retorna o caminho absoluto utilizando o diretório do arquivo atual como referência.
@@ -126,7 +132,6 @@ Accept: */*
 """
 
 response = Servy.Handler.handle(request)
-
 IO.puts(response)
 IO.puts("# -----------------------------------------------------------------------------------")
 
@@ -141,7 +146,6 @@ Accept: */*
 """
 
 response = Servy.Handler.handle(request)
-
 IO.puts(response)
 IO.puts("# -----------------------------------------------------------------------------------")
 
@@ -156,7 +160,6 @@ Accept: */*
 """
 
 response = Servy.Handler.handle(request)
-
 IO.puts(response)
 IO.puts("# ---------------------------------------------------------------------------------")
 
@@ -171,7 +174,6 @@ Accept: */*
 """
 
 response = Servy.Handler.handle(request)
-
 IO.puts(response)
 IO.puts("# ---------------------------------------------------------------------------------")
 
@@ -186,7 +188,6 @@ Accept: */*
 """
 
 response = Servy.Handler.handle(request)
-
 IO.puts(response)
 IO.puts("# -----------------------------------------------------------------------------------")
 
@@ -201,9 +202,7 @@ Accept: */*
 """
 
 response = Servy.Handler.handle(request)
-
 IO.puts(response)
-
 IO.puts("# -----------------------------------------------------------------------------------")
 
 # -------------------------------------------
@@ -220,5 +219,4 @@ name=Baloo&type=Brown
 """
 
 response = Servy.Handler.handle(request)
-
 IO.puts(response)
